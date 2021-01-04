@@ -1,0 +1,170 @@
+* {
+    margin    : 0;
+    padding   : 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family     : 'Open-Sans', sans-serif;
+    font-size       : 14px;
+    min-height      : 100vh;
+    width           : 100%;
+    background-color: #2b2b2b;
+    display         : flex;
+    flex-direction  : column;
+    justify-content : center;
+    align-items     : center;
+}
+
+.loading-box {
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    width          : 250px;
+    height         : 100px;
+    position       : relative;
+    animation      : colorAnimation 12s infinite;
+}
+
+.loading-box p {
+    position      : absolute;
+    top           : 50%;
+    left          : 50%;
+    transform     : translate(-50%, -50%);
+    color         : currentColor;
+    letter-spacing: 1.5px;
+    font-size     : 2em;
+    animation     : fadeAnimation 1s infinite;
+}
+
+@keyframes colorAnimation {
+    0% {
+        color: #6052db;
+    }
+
+    33% {
+        color: #ee4545;
+    }
+
+    66% {
+        color: #fdc91e;
+    }
+
+    100% {
+        color: #009e4a;
+    }
+}
+
+@keyframes fadeAnimation {
+    0% {
+        opacity: 0.8;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 0.8;
+    }
+}
+
+.loading-box::before {
+    content  : "";
+    position : absolute;
+    top      : 0;
+    left     : 0;
+    width    : 4px;
+    height   : 0;
+    animation: verticalAnimation 3s;
+}
+
+.loading-box::after {
+    content  : "";
+    position : absolute;
+    top      : 0;
+    left     : 0;
+    width    : 0;
+    height   : 4px;
+    animation: horizontalAnimation 3s;
+}
+
+.util-loading-box {
+    position: absolute;
+    top     : 0;
+    left    : 0;
+    width   : 100%;
+    height  : 100%;
+}
+
+.util-loading-box::before {
+    content        : "";
+    position       : absolute;
+    top            : 0;
+    right          : 0;
+    width          : 4px;
+    height         : 0px;
+    animation      : verticalAnimation 3s;
+    animation-delay: 1s;
+}
+
+.util-loading-box::after {
+    content        : "";
+    position       : absolute;
+    bottom         : 0;
+    left           : 0;
+    width          : 0;
+    height         : 4px;
+    animation      : horizontalAnimation 3s;
+    animation-delay: 1s;
+}
+
+.loading-box::before,
+.loading-box::after,
+.util-loading-box::before,
+.util-loading-box::after {
+    animation-iteration-count: infinite;
+    background               : currentColor;
+}
+
+@keyframes horizontalAnimation {
+    0% {
+        width: 0;
+    }
+
+    33% {
+        width: 100%;
+        left : 0;
+    }
+
+    66% {
+        width: 0;
+        left : 100%;
+    }
+
+    100% {
+        width: 0;
+        left : 100%;
+    }
+}
+
+@keyframes verticalAnimation {
+    0% {
+        height: 0;
+    }
+
+    33% {
+        top   : 0;
+        height: 100%;
+    }
+
+    66% {
+        top   : 100%;
+        height: 0;
+    }
+
+    100% {
+        top   : 100%;
+        height: 0;
+    }
+}
